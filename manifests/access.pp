@@ -1,14 +1,14 @@
-define pam::access (
+define security::access (
   $permission,
   $entity     = $title,
   $origin,
   $ensure     = present,
   $priority   = '10'
 ) {
-  include pam
+  include security
 
   if ! ($::osfamily in ['Debian', 'RedHat', 'Suse']) {
-    fail("pam::access does not support osfamily $::osfamily")
+    fail("security::access does not support osfamily $::osfamily")
   }
 
   if ! ($permission in ['+', '-']) {
@@ -17,7 +17,7 @@ define pam::access (
 
   realize Concat['/etc/security/access.conf']
 
-  concat::fragment { "pam::access $permission$entity$origin":
+  concat::fragment { "security::access $permission$entity$origin":
     ensure  => $ensure,
     target  => '/etc/security/access.conf',
     content => "${permission}:${entity}:${origin}\n",

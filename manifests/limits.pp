@@ -1,4 +1,4 @@
-define pam::limits (
+define security::limits (
   $domain,
   $type,
   $item,
@@ -6,15 +6,15 @@ define pam::limits (
   $ensure   = present,
   $priority = '10'
 ) {
-  include pam
+  include security
 
   if ! ($osfamily in ['Debian', 'RedHat', 'Suse']) {
-    fail("pam::limits does not support osfamily $osfamily")
+    fail("security::limits does not support osfamily $osfamily")
   }
 
   realize Concat['/etc/security/limits.conf']
 
-  concat::fragment { "pam::limits ${domain}-${type}-${item}-${value}":
+  concat::fragment { "security::limits ${domain}-${type}-${item}-${value}":
     ensure  => $ensure,
     target  => '/etc/security/limits.conf',
     content => "${domain} ${type} ${item} ${value}\n",

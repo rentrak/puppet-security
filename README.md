@@ -7,7 +7,7 @@ and /etc/security/limits.conf
 ### Example usage for managing access.conf
 
 ``` puppet
-pam::access {
+security::access {
   "root":
     permission  => "+",
     entity      => "root",
@@ -24,7 +24,7 @@ pam::access {
 ### Example usage for managing limits.conf
 
 ``` puppet
-pam::limits {
+security::limits {
   "nofile_hard":
      ensure   => present,
      domain   => "*",

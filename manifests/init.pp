@@ -1,4 +1,4 @@
-class pam {
+class security {
   include concat::setup
 
   @concat { '/etc/security/access.conf':

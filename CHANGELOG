@@ -1,3 +1,6 @@
+0.0.4 - rentrak/security - 2014/02/18
+          Changes to name to not conflict with module that actually manages pam settings 
+
 0.0.2 - pdxcat/pam - 2012/05/02
 
   ******* Update CHANGELOG for 0.0.2 release
